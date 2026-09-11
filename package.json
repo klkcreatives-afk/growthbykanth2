@@ -1,14 +1,15 @@
 {
   "name": "growthbykanth",
   "version": "1.0.0",
+  "type": "module",
   "description": "Growth by Kanth - Static site migration",
   "main": "server.js",
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js",
-    "build": "mkdir -p dist && cp index.html dist/ && cp -r assets dist/ 2>/dev/null || true"
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite"
   },
-  "dependencies": {
-    "express": "^5.2.1"
+  "devDependencies": {
+    "vite": "^8.3.0"
   }
 }
