@@ -74,7 +74,24 @@
   nav a::after{content:""; position:absolute; height:1px; left:0; right:0; bottom:-5px; transform:scaleX(0); background:var(--cyan); transition:transform .25s ease;}
   nav a:hover{color:var(--paper);}
   nav a:hover::after{transform:scaleX(1);}
-  @media (max-width:700px){nav{display:none;}}
+  .menu-toggle{
+    display:none; width:44px; height:44px; place-items:center; border:1px solid var(--line-soft);
+    border-radius:10px; background:rgba(157,207,255,.08); color:var(--paper); cursor:pointer;
+  }
+  .menu-toggle svg{width:21px; height:21px; fill:none; stroke:currentColor; stroke-linecap:round; stroke-width:1.8;}
+  .mobile-menu{display:none;}
+  @media (max-width:700px){
+    nav{display:none;}
+    .menu-toggle{display:grid;}
+    .mobile-menu{
+      display:grid; grid-template-columns:1fr; gap:2px; position:absolute; z-index:60; top:calc(100% + 10px); left:20px; right:20px;
+      padding:10px; border:1px solid var(--line-soft); border-radius:14px; background:rgba(4,19,44,.97);
+      box-shadow:0 22px 46px rgba(0,0,0,.35); backdrop-filter:blur(18px); opacity:0; pointer-events:none; transform:translateY(-10px); transition:opacity .2s ease, transform .2s ease;
+    }
+    .mobile-menu.is-open{opacity:1; pointer-events:auto; transform:translateY(0);}
+    .mobile-menu a{padding:12px 14px; border-radius:8px; color:var(--muted-lt); font-size:15px; transition:background .2s, color .2s;}
+    .mobile-menu a:hover,.mobile-menu a:focus-visible{background:rgba(80,157,255,.15); color:var(--paper); outline:none;}
+  }
 
   /* ---------- Hero ---------- */
   .hero{
@@ -287,11 +304,21 @@
       <a href="#process">How it works</a>
       <a href="#disclaimer">Disclaimer</a>
     </nav>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="mobile-menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="#about">About Me</a>
+      <a href="#plans">Free community</a>
+      <a href="#process">Getting started</a>
+      <a href="#why-join">Why join</a>
+      <a href="#disclaimer">Set expectations</a>
+    </div>
   </div>
 </header>
 
 <main id="top">
-<section class="hero">
+<section class="hero" id="about">
   <div class="wrap">
     <div class="eyebrow">Go deeper than the feed</div>
     <h1>Better information, sharper frameworks, and a <span class="gradient-text">clearer way to think about markets.</span></h1>
@@ -366,7 +393,7 @@
   </div>
 </section>
 
-<section class="framework">
+<section class="framework" id="why-join">
   <div class="wrap">
     <div class="framework-grid">
       <div>
@@ -463,6 +490,26 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  const closeMobileMenu = () => {
+    mobileMenu.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open navigation menu');
+  };
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('is-open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  });
+
+  mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMobileMenu));
+  window.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMobileMenu(); });
+</script>
 
 </body>
 </html>
