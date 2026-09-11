@@ -149,6 +149,20 @@
   .hero .ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:0;}
   .hero .fine-print{font-size:13px; color:var(--muted-lt); margin-top:15px;}
 
+  /* ---------- About ---------- */
+  .about{position:relative; overflow:hidden; border-bottom:1px solid var(--line-soft);}
+  .about::before{content:""; position:absolute; width:420px; height:420px; border-radius:50%; left:-270px; top:-230px; background:radial-gradient(circle, rgba(27,219,255,.16), transparent 68%); pointer-events:none;}
+  .about-grid{display:grid; grid-template-columns:220px minmax(0, 1fr); gap:56px; align-items:start; position:relative;}
+  .about-mark{
+    aspect-ratio:1; display:grid; place-items:center; border:1px solid var(--line); border-radius:22px;
+    background:linear-gradient(145deg, rgba(49,145,255,.22), rgba(102,68,255,.18)); box-shadow:inset 0 1px rgba(255,255,255,.12), 0 22px 50px rgba(0,0,0,.17);
+  }
+  .about-mark span{font-family:'Fraunces', serif; font-size:58px; color:var(--paper); letter-spacing:-.08em; text-shadow:0 0 28px rgba(27,219,255,.32);}
+  .about-copy .kicker{font-family:'Fraunces', serif; font-style:italic; color:var(--blue-bright); font-size:15px; margin-bottom:14px;}
+  .about-copy h2{font-size:clamp(29px, 3.6vw, 42px); line-height:1.12; margin-bottom:22px;}
+  .about-copy p{max-width:720px; color:var(--muted-lt); font-size:16.5px; margin-top:16px;}
+  @media (max-width:700px){.about-grid{grid-template-columns:1fr; gap:28px;}.about-mark{width:112px; border-radius:18px;}.about-mark span{font-size:39px;}}
+
   /* ---------- Section headings ---------- */
   .section-head{max-width:620px; margin-bottom:56px;}
   .section-head .kicker{font-family:'Fraunces', serif; font-style:italic; color:var(--blue-bright); font-size:15px; margin-bottom:14px;}
@@ -318,7 +332,7 @@
 </header>
 
 <main id="top">
-<section class="hero" id="about">
+<section class="hero">
   <div class="wrap">
     <div class="eyebrow">Go deeper than the feed</div>
     <h1>Better information, sharper frameworks, and a <span class="gradient-text">clearer way to think about markets.</span></h1>
@@ -332,6 +346,21 @@
       <span><strong>No</strong> promises of profits</span>
       <span><strong>No</strong> "guaranteed calls"</span>
       <span><strong>No</strong> fake screenshots</span>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-mark" aria-hidden="true"><span>LK</span></div>
+      <div class="about-copy">
+        <div class="kicker">About Me</div>
+        <h2>Hi, I’m Lakshmi Kanth, the creator of Growth by Kanth.</h2>
+        <p>I’m passionate about trading, financial markets, and continuous learning, and I created this platform to share practical knowledge, market analysis, trading education, psychology, and risk-management principles with people who want to become more disciplined and informed traders.</p>
+        <p>I believe successful trading is not about chasing quick profits or predicting every market move—it’s about preparation, patience, risk management, discipline, and continuously improving your decision-making process.</p>
+        <p>Through Growth by Kanth, I’m building a community where traders can learn, practise, share ideas, review their decisions, and grow together. My goal is simple: to help you develop a better understanding of the markets and build a trading process you can follow with confidence and discipline.</p>
+      </div>
     </div>
   </div>
 </section>
