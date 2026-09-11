@@ -1,0 +1,6 @@
+{
+  "name": "Growth by Kanth",
+  "description": "A free market learning community for clearer thinking, practical education, and focused discussion.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
